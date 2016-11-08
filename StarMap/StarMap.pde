@@ -1,6 +1,9 @@
 ArrayList<Star> stars = new ArrayList<Star>();
 Table t;
-
+int check =1;
+float x2 = 0;
+float y2 =0;
+  
 void setup()
 {
  size(800,800);
@@ -10,8 +13,6 @@ void setup()
 
 void draw()
 {
-
-  int check =0;
    int i = -5;
   
   background(0);
@@ -35,8 +36,8 @@ void draw()
   float x=0;
   float y=0;
   float starSize=0;
-  float x2=0;
-  float y2=0;
+
+  
   
   for(int k=0;k<stars.size();k++)
   {
@@ -59,33 +60,61 @@ void draw()
     
    if(mousePressed)
    {
-      if(mouseX > x-starSize && mouseX < x+starSize && mouseY > y-starSize && mouseY < y+starSize)
+      if(mouseX > x-starSize && mouseX < x+starSize && mouseY > y-starSize && mouseY < y+starSize && check==1)
       {
-       check =1;
-       x2=x;
-       y2=y;
-       
+         check = 1;
+         x2 = x;
+         y2 = y;
       }
-   }
+    }
   }
   
   if(check==1)
   {
-   if(mousePressed)
-   {
-     stroke(255,255,0);
-     line(x2,y2,mouseX,mouseY);
-   }
-   else
-   {
-     check =0; 
-   }
-   
- 
-  
+   drawLine(); 
   }
+  
 }
+int check2 = 1;
+float x3=0;
+float y3=0;
+void drawLine()
+{
+  
+  if(mousePressed)
+  {
+    if(check == 1)
+    {
+      stroke(255,255,0);
+      line(x2,y2,mouseX,mouseY); 
+    }
+    else
+    {
+      check=0; 
+    }
+    
+    for(int k=0;k<stars.size();k++)
+    {
+       float starSize = stars.get(k).AbsMag;
+       
+      float x = map(stars.get(k).Xg,-5,5,50,width-50);
+      float y = map(stars.get(k).Yg,-5,5,50,height-50);
+     
+       if(mouseX > x2-starSize && mouseX < x2+starSize && mouseY > y2-starSize && mouseY < y2+starSize && check2==1)
+       {
+          check2 =1;
+          x3 = x;
+          y3 = y;
+       }
+    }
+    
 
+    line(x2,y2,x3,y3); 
+    
+    
+  }
+  
+}
 void loadData()
 {
   t = loadTable("HabHYG15ly.csv","header");
