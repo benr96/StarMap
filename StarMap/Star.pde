@@ -25,7 +25,7 @@ class Star
  Star(TableRow row)
  {
   this.hab = row.getFloat("Hab?");
-  this.DisplayName = row.getString("DisplayName");
+  this.DisplayName = row.getString("Display Name");
   this.Distance = row.getFloat("Distance");
   this.Xg = row.getFloat("Xg");
   this.Yg = row.getFloat("Yg");
@@ -33,4 +33,8 @@ class Star
   this.AbsMag = row.getFloat("AbsMag");
  }
  
+ String toString()
+ {
+  return hab + "\t" +DisplayName +"\t" +Distance+"\t" +Xg+"\t" +Yg+"\t" +Zg+"\t" +AbsMag;
+ }
 }
