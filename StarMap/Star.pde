@@ -33,6 +33,7 @@ class Star
   this.AbsMag = row.getFloat("AbsMag");
  }
  
+ //for printing
  String toString()
  {
   return hab + "\t" +DisplayName +"\t" +Distance+"\t" +Xg+"\t" +Yg+"\t" +Zg+"\t" +AbsMag;
